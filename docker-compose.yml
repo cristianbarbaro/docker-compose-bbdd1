@@ -7,7 +7,7 @@ services:
         ports:
             - 8080:80
         volumes:
-            - ./datadir/phpmyadmin/sessions:/sessions/
+            - ./datadir/phpmyadmin/sessions:/sessions
         depends_on:
             - mysql_bbdd1
         environment:
