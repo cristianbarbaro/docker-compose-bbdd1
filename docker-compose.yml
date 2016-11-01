@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+    phpmyadmin_bbdd1:
+        image: phpmyadmin/phpmyadmin
+        container_name: PHPMyAdmin_BBDD1
+        ports:
+            - 8080:80
+        volumes:
+            - ./datadir/phpmyadmin/sessions:/sessions/
+        depends_on:
+            - mysql_bbdd1
+        environment:
+            PMA_HOST: mysql_bbdd1
+    mysql_bbdd1:
+        image: mysql:5.6
+        container_name: MySQL_BBDD1
+        volumes:
+            - ./datadir/mysql/:/var/lib/mysql
+            - ./Material/:/root/material
+        environment:
+            MYSQL_ROOT_PASSWORD: ${ROOT_PASSWORD}
